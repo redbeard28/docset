@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="fr" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="fr" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Le répertoire /proc - Redbeard-Consulting docs</title>
+  
+
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Le répertoire /proc";
+    var mkdocs_page_input_path = "shell-bash/folder-proc.md";
+    var mkdocs_page_url = "/shell-bash/folder-proc/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-89297097-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Redbeard-Consulting docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Accueil</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Markdown</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../howto/mkdocs/utilisation_markdown/">How to use markdown</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Cloud Amazon</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../aws/freenas_aws_s3/">Backup sync with s3cmd on AWS S3 bucket</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Howto</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../howto/ansible/ansible_howto/">Ansible basics commands</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../howto/Linux/populate-hosts.deny/">Populate file hosts.deny</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../howto/keepalived/install_keepalived/">Howto install keepalived</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../howto/keepalived/configure_keepalived/">Howto configure keepalived</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../howto/keepalived/verify_keepalived/">Howto verify keepalived</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../howto/Red Hat/register-redhat-system/">Register and subscribe a redhat system</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../howto/Red Hat/yum_error_erno-3/">yum error [erno-3]</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Shell/Bash</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../date-avanced-cmd/">Utilisation avancée de la commande date</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../freeze-by-cpu-overload/">Freeze server by cpu overload</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../kill-zombie-process/">Kill that zombie processus</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../most-use-cmd-list/">Liste des commandes les plus utilisées</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../cmd-grep/">Exemples de commandes grep</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../find-rm/">Delete Files older than</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Le répertoire /proc</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#le-repertoire-proc">Le répertoire /proc</a></li>
+                
+                    <li><a class="toctree-l4" href="#repertoire-proc">Répertoire /proc</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../reverse-ssh-tunel/">Reverse SSH Tunnel</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Domotique</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../domotique/domoticz/create-dummy-switch/">Créer un switch virtuel</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../domotique/domoticz/sonos-integration/">Intégrer Sonos à domoticz</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../domotique/domoticz/tts-domoticz/">Mettre en place du TTS sous domoticz</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>About</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/license/">License</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/release-notes/">Release Notes</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Redbeard-Consulting docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Shell/Bash &raquo;</li>
+        
+      
+    
+    <li>Le répertoire /proc</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="le-repertoire-proc">Le répertoire /proc</h1>
+<p>On retrouvera donc un répertoire par processus actif. Chacun porte le numéro du processus (PID). Il est constitué des fichiers suivants :</p>
+<ul>
+<li>cmdline contient la ligne de commande qui a créé le processus.</li>
+<li>status contient des informations sur l’état du processus (en attente, en exécution, propriétaire... ).</li>
+<li>exe est un lien vers le fichier exécutable utilisé par le processus.</li>
+</ul>
+<p>Dans le répertoire /proc, on retrouve des fichiers contenants des informations générales sur le système. Comme :</p>
+<ul>
+<li>uptime donnant le temps de fonctionnement du système.</li>
+<li>stat donnant diverses statistiques sur l’utilisation des ressources du système (CPU, mémoire... ).</li>
+<li>meminfo donnant un récapitulatif de l’utilisation de la mémoire.</li>
+<li>cpuinfo donnant une description des CPU du système.</li>
+</ul>
+<h2 id="repertoire-proc">Répertoire /proc</h2>
+<h3 id="quest-ce-que-proc">Qu'est-ce que "/proc" ?</h3>
+<p>/proc est un système de fichier utilisé par le noyau pour envoyer des informations aux différents processus d'ou le nom /proc.</p>
+<p>La modification des fichiers qu'il contient peut changer des paramètres du noyau à la volée.</p>
+<p>A la différence des autres répertoires, <strong>/proc</strong> est stocké en mémoire et non sur le disque dur.</p>
+<p>Voici, par exemple, l'intérieur du fichier <strong>cpuinfo</strong>. Pour le consulter rapidement :</p>
+<div class="code"><pre><span></span>cat /proc/cpuinfo
+</pre></div>
+
+
+<p>En voici le résultat :</p>
+<div class="code"><pre><span></span><span class="n">processor</span> <span class="o">:</span> <span class="mi">0</span>
+<span class="n">vendor_id</span> <span class="o">:</span> <span class="n">GenuineIntel</span>
+<span class="n">cpu</span> <span class="n">family</span> <span class="o">:</span> <span class="mi">15</span>
+<span class="n">model</span> <span class="o">:</span> <span class="mi">1</span>
+<span class="n">model</span> <span class="n">name</span> <span class="o">:</span> <span class="n">Intel</span><span class="o">(</span><span class="n">R</span><span class="o">)</span> <span class="n">Celeron</span><span class="o">(</span><span class="n">R</span><span class="o">)</span> <span class="n">CPU</span> <span class="mf">1.80</span><span class="n">GHz</span>
+<span class="n">stepping</span> <span class="o">:</span> <span class="mi">3</span>
+<span class="n">cpu</span> <span class="n">MHz</span> <span class="o">:</span> <span class="mf">1804.811</span>
+<span class="n">cache</span> <span class="n">size</span> <span class="o">:</span> <span class="mi">128</span> <span class="n">KB</span>
+<span class="n">fdiv_bug</span> <span class="o">:</span> <span class="n">no</span>
+<span class="n">hlt_bug</span> <span class="o">:</span> <span class="n">no</span>
+<span class="n">f00f_bug</span> <span class="o">:</span> <span class="n">no</span>
+<span class="n">coma_bug</span> <span class="o">:</span> <span class="n">no</span>
+<span class="n">fpu</span> <span class="o">:</span> <span class="n">yes</span>
+<span class="n">fpu_exception</span> <span class="o">:</span> <span class="n">yes</span>
+<span class="n">cpuid</span> <span class="n">level</span> <span class="o">:</span> <span class="mi">2</span>
+<span class="n">wp</span> <span class="o">:</span> <span class="n">yes</span>
+<span class="n">flags</span> <span class="o">:</span> <span class="n">fpu</span> <span class="n">vme</span> <span class="n">de</span> <span class="n">pse</span> <span class="n">tsc</span> <span class="n">msr</span> <span class="n">pae</span> <span class="n">mce</span> <span class="n">cx8</span> <span class="n">apic</span> <span class="n">sep</span> <span class="n">mtrr</span> <span class="n">pge</span> <span class="n">mca</span> <span class="n">cmov</span> <span class="n">pat</span> <span class="n">pse36</span> <span class="n">clflush</span> <span class="n">dts</span> <span class="n">acpi</span> <span class="n">mmx</span> <span class="n">fxsr</span> <span class="n">sse</span> <span class="n">sse2</span> <span class="n">ss</span> <span class="n">ht</span> <span class="n">tm</span>
+<span class="n">bogomips</span> <span class="o">:</span> <span class="mf">3579.90</span>
+</pre></div>
+
+
+<h3 id="les-informations-utiles-du-noyau">Les informations utiles du noyau :</h3>
+<table>
+<thead>
+<tr>
+<th>Fichier</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/proc/cpuinfo</td>
+<td>Concerne les informations sur le Processeur ( Modèle, famille, taille du cache, etc ... ).</td>
+</tr>
+<tr>
+<td>/proc/meminfo</td>
+<td>Concerne les informations sur la mémoire physique ( Ram ), l'espace du "Swap", etc ...</td>
+</tr>
+<tr>
+<td>/proc/mounts</td>
+<td>Concerne les informations sur les systèmes de fichiers déjà montés.</td>
+</tr>
+<tr>
+<td>/proc/devices</td>
+<td>Concerne les informations sur les périphériques disponibles.</td>
+</tr>
+<tr>
+<td>/proc/modules</td>
+<td>Concerne les informations sur les modules activés dans le noyau.</td>
+</tr>
+<tr>
+<td>/proc/cmdline</td>
+<td>Concerne les informations sur les paramètres donnés au noyau lors de la mise en route.</td>
+</tr>
+</tbody>
+</table>
+<p>D'autres fichiers sont bien évidemment présents dans ce répertoire. Certains sont très sensibles comme <strong>kcore</strong>, à éviter d'éditer ou de modifier. \ \</p>
+<p>Information sur les processus en cours :
+Nous pouvons nous aider du système de fichiers <strong>/proc</strong> pour extraire des données en cours d'exécution. Le répertoire <strong>/proc</strong> contient des sous-répertoires numérotés correspondant au numéro d'identification de processus (PID). Ainsi, pour chaque processus en cours d'exécution, nous avons un sous-répertoire qui porte comme nom le PID de chacun. Ces sous-répertoires contiennent des fichiers qui fournissent des détails important de l'état et l'environnement d'un processus. \ \</p>
+<p>Recherchons un processus en cours d'exécution :
+    ps -aef | grep mozilla</p>
+<p>Résultat :</p>
+<div class="code"><pre><span></span>xxxxxxx       12807  11544   5 Apr30 ?             00:22:07    /usr/lib/mozilla-1.6/mozilla-bin
+</pre></div>
+
+
+<p>L'exécution de la commande nous montre un processus de Mozilla en cours avec le PID numéro 12807 . Il devrait donc exister un sous-répertoire dans <strong>/proc</strong> portant ce numéro.</p>
+<p>Vérifions :</p>
+<div class="code"><pre><span></span>ls -l /proc/1280
+</pre></div>
+
+
+<p>Résultat :</p>
+<div class="code"><pre><span></span>total 0
+-r-------- 1 standby standby 0 mai 1 02:52 auxv
+-r--r--r-- 1 standby standby 0 mai 1 01:05 cmdline
+lrwxrwxrwx 1 standby standby 0 mai 1 02:52 cwd -&gt; /home/standby/
+-r-------- 1 standby standby 0 mai 1 02:52 environ
+lrwxrwxrwx 1 standby standby 0 mai 1 01:05 exe -&gt;   /usr/lib/mozilla-1.6/mozilla-bin*
+dr-x------ 2 standby standby 0 mai 1 02:52 fd/
+-r--r--r-- 1 standby standby 0 mai 1 02:52 maps
+-rw------- 1 standby standby 0 mai 1 02:52 mem
+-r--r--r-- 1 standby standby 0 mai 1 02:52 mounts
+lrwxrwxrwx 1 standby standby 0 mai 1 02:52 root -&gt; //
+-r--r--r-- 1 standby standby 0 mai 1 01:05 stat
+-r--r--r-- 1 standby standby 0 mai 1 02:52 statm
+-r--r--r-- 1 standby standby 0 mai 1 02:40 status
+dr-xr-xr-x 3 standby standby 0 mai 1 02:52 task/
+-r--r--r-- 1 standby standby 0 mai 1 02:52 wchan
+</pre></div>
+
+
+<h3 id="interagir-avec-le-noyau-directement-grace-a-proc">Interagir avec le noyau directement grâce à /proc :</h3>
+<p>La plupart des fichiers dans <strong>/proc</strong> ne sont qu'en lecture seule, excepté le répertoire <strong>/proc/sys</strong> qui lui est en lecture/écriture ce qui implique que l'on peut modifier l'état du noyau instantanément en modifiant ces fichiers.</p>
+<ul>
+<li>ATTENTION :** Vous agissez directement sur le noyau, il faut donc être très délicat !</li>
+<li>/proc/sys/kernel<strong> contient les informations sur le fonctionnement général du noyau. Ce répertoire héberge le nom de domaine et le nom d'hôte pour les ordinateurs du réseau, cette configuration se trouve dans les fichiers </strong>domainname<strong> et </strong>hostname**. Ceux-ci peuvent être configurés pour modifier ces noms.</li>
+</ul>
+<p>Testons et commençons par voir le hostname affecté à notre machine :</p>
+<ul>
+<li>hostname</li>
+<li>POSTE1    ( Sans nom de domaine )</li>
+<li>
+<p>POSTE1.domainname.com ( Avec nom de domaine )
+Vérifions si nous trouvons la même chose dans ce fameux répertoire. Voyons le nom de domaine :</p>
+<p>$ cat /proc/sys/kernel/domainname
+                  ( Sans nom de domaine )
+domainname.com ( Avec nom de domaine )</p>
+</li>
+</ul>
+<p>Vérifions cette fois le hostname de la machine :</p>
+<div class="code"><pre><span></span>$ cat /proc/sys/kernel/hostname
+POSTE1  <span class="o">(</span> Sans nom de domaine <span class="o">)</span>
+POSTE1  <span class="o">(</span> Avec nom de domaine <span class="o">)</span>
+</pre></div>
+
+
+<p>Nous pouvons donc constater que les commande interagissent avec ce répertoire, <strong>/proc</strong>, plus précisément dans ce cas, <strong>/proc/sys/kernel/</strong> avec les fichiers <strong>hostname</strong> et <strong>domainname</strong>.</p>
+<p>Tentons d'interagir cette fois-ci avec le noyau. Pour cela nous allons modifier le <strong>hostname</strong> par ligne de commande puis vérifier ce que la machine nous répondra lorsque nous lui demanderons quel est notre <strong>hostname</strong>.</p>
+<div class="code"><pre><span></span>$ <span class="nb">echo</span> <span class="s2">&quot;nouveau-hostname&quot;</span> &gt; /proc/sys/kernel/hostname
+$ hostname
+nouveau-hostname    <span class="o">(</span> Sans nom de domaine <span class="o">)</span>
+nouveau-hostname.domainname.com    <span class="o">(</span> Avec nom de domaine <span class="o">)</span>
+</pre></div>
+
+
+<p>Nous voyons bien que le noyau vient d'être modifieé. Bien des fichiers peuvent être modifiés mais attention à ne pas faire tout et n'importe quoi.</p>
+<p>Un exemple assez sympathique, modifier en temps réel le noyau de façon à ne plus permettre de réponse de votre machine sur le réseau. Pour être plus clair, nous allons lui demander de ne plus répondre à la commande <strong>PING</strong>, cela va nous permettre de nous cacher du réseau.</p>
+<p>Nouveau-hostname :</p>
+<div class="code"><pre><span></span>$ <span class="nb">echo</span> <span class="m">1</span> &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all
+$ ping POSTE1
+</pre></div>
+
+
+<p>Pas de réponse, si ce n'est qu'il vous montre que des packets on été envoyés mais sans retour.</p>
+<p>Pour remettre par défaut cette valeur aussi rapidement, il suffit de remplacer la valeur 1 par 0 :</p>
+<div class="code"><pre><span></span>$ <span class="nb">echo</span> <span class="m">0</span> &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all
+$ ping POSTE1
+<span class="m">64</span> bytes from POSTE1.domainname.com <span class="o">(</span>192.168.x.x<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.028 ms
+</pre></div>
+
+
+<p>La machine répond de nouveau !</p>
+<p>En conclusion, le système de fichiers <strong>/proc</strong> assure une interface aux éléments internes du système Linux. Il assiste l'administrateur afin de connaître des états et de configurer des périphériques et des processus sur une machine. La compréhension et l'utilisation de ce système de fichiers sont primordiales pour bien se servir du système d'exploitation Linux. Donc ne faîtes pas de bêtises ;-) .</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../reverse-ssh-tunel/" class="btn btn-neutral float-right" title="Reverse SSH Tunnel">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../find-rm/" class="btn btn-neutral" title="Delete Files older than"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  <div align="center">Built with <a href="http://www.mkdocs.org">MkDocs</a> using a theme provided by <a href="https://readthedocs.org">Read the Docs</a>.</div>
+  <div align="center">REDBEAR-CONSULTING 2016</div> 
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../find-rm/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../reverse-ssh-tunel/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

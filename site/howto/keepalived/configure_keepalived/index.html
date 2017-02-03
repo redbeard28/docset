@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="fr" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="fr" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Howto configure keepalived - Redbeard-Consulting docs</title>
+  
+
+  <link rel="shortcut icon" href="../../../images/favicon.ico">
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Howto configure keepalived";
+    var mkdocs_page_input_path = "howto/keepalived/configure_keepalived.md";
+    var mkdocs_page_url = "/howto/keepalived/configure_keepalived/";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../js/highlight.pack.js"></script>
+  <script src="../../../js/theme.js"></script> 
+
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-89297097-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Redbeard-Consulting docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../..">Accueil</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Markdown</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../mkdocs/utilisation_markdown/">How to use markdown</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Cloud Amazon</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../aws/freenas_aws_s3/">Backup sync with s3cmd on AWS S3 bucket</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Howto</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../ansible/ansible_howto/">Ansible basics commands</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Linux/populate-hosts.deny/">Populate file hosts.deny</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../install_keepalived/">Howto install keepalived</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Howto configure keepalived</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#comment-configurer-keepalived">Comment configurer keepalived</a></li>
+                
+                    <li><a class="toctree-l4" href="#objet">Objet</a></li>
+                
+                    <li><a class="toctree-l4" href="#description-de-lenvironnement">Description de l'environnement</a></li>
+                
+                    <li><a class="toctree-l4" href="#pourquoi-cette-idee-folle">Pourquoi cette idée folle?</a></li>
+                
+                    <li><a class="toctree-l4" href="#fichier-keepalivedconf">Fichier keepalived.conf</a></li>
+                
+                    <li><a class="toctree-l4" href="#parametrage-du-master">Paramétrage du Master</a></li>
+                
+                    <li><a class="toctree-l4" href="#parametrage-des-slaves">Paramétrage des slaves</a></li>
+                
+                    <li><a class="toctree-l4" href="#en-conclusion">En conclusion</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../verify_keepalived/">Howto verify keepalived</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Red Hat/register-redhat-system/">Register and subscribe a redhat system</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Red Hat/yum_error_erno-3/">yum error [erno-3]</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Shell/Bash</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../shell-bash/date-avanced-cmd/">Utilisation avancée de la commande date</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../shell-bash/freeze-by-cpu-overload/">Freeze server by cpu overload</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../shell-bash/kill-zombie-process/">Kill that zombie processus</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../shell-bash/most-use-cmd-list/">Liste des commandes les plus utilisées</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../shell-bash/cmd-grep/">Exemples de commandes grep</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../shell-bash/find-rm/">Delete Files older than</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../shell-bash/folder-proc/">Le répertoire /proc</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../shell-bash/reverse-ssh-tunel/">Reverse SSH Tunnel</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Domotique</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../domotique/domoticz/create-dummy-switch/">Créer un switch virtuel</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../domotique/domoticz/sonos-integration/">Intégrer Sonos à domoticz</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../domotique/domoticz/tts-domoticz/">Mettre en place du TTS sous domoticz</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>About</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../about/license/">License</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../about/release-notes/">Release Notes</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Redbeard-Consulting docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Howto &raquo;</li>
+        
+      
+    
+    <li>Howto configure keepalived</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="comment-configurer-keepalived">Comment configurer keepalived</h1>
+<h2 id="objet">Objet</h2>
+<p>Nous verrons dans ce document comment configurer keepalived pour deux serveurs guacamole. C'est juste pour l'exemple et le fun.</p>
+<h2 id="description-de-lenvironnement">Description de l'environnement</h2>
+<p>Nous sommes dans un environnement simple, dont voici le schéma</p>
+<p><img alt="Keepalived" src="../img/haproxy-keepalived.png" /></p>
+<p>Comme on peut le constater notre point faible est le HAProxy car il n'y en a qu'un =&gt; c'est le firewall pfsense.</p>
+<p>Le HAProxy fait du round-robin sur les deux serveurs Apache SSL (letsencrypte) en mode Reverse Proxy vers la VIP des serveurs Guacamole.</p>
+<h2 id="pourquoi-cette-idee-folle">Pourquoi cette idée folle?</h2>
+<p>En fait, tout est partie d'un problème de déconnexions intempestives sur mon serveur guacamole. A la base, il n'y avait qu'un seul reverse proxy qui permettait de protéger le port par défaut du tomcat8 (tcp_8080).</p>
+<p>Je ne rappellerai pas les avantages et inconvennients du reverse proxy apache. Ici je l'utilise pour partager une seul IP WAN sur mes serveurs guacamole, cloud...</p>
+<h2 id="fichier-keepalivedconf">Fichier keepalived.conf</h2>
+<p>Vous trouverez ce fichier dans:</p>
+<div class="code"><pre><span></span>/etc/keepalived/keepalived.conf
+</pre></div>
+
+
+<h2 id="parametrage-du-master">Paramétrage du Master</h2>
+<p>Voici le paramétrage:</p>
+<div class="code"><pre><span></span><span class="c1"># Settings for notifications</span>
+global_defs <span class="o">{</span>
+    notification_email <span class="o">{</span>
+        admin@mon-domain.com     <span class="c1"># Email address for notifications</span>
+    <span class="o">}</span>
+    notification_email_from guac01@domain.intra  <span class="c1"># The from address for the notifications</span>
+    smtp_server 192.168.0.9     <span class="c1"># You can specifiy your own smtp server here</span>
+    smtp_connect_timeout 15
+<span class="o">}</span>
+
+<span class="c1"># Configuation for the virtual interface</span>
+vrrp_instance VI_1 <span class="o">{</span>
+    interface ens160
+    state MASTER        <span class="c1"># set this to BACKUP on the other machine</span>
+    priority <span class="m">101</span>        <span class="c1"># set this to 100 on the other machine</span>
+    virtual_router_id 51
+
+    smtp_alert          <span class="c1"># Activate email notifications</span>
+
+    authentication <span class="o">{</span>
+        auth_type AH
+        auth_pass  3615codeULA     <span class="c1"># Set this to some secret phrase</span>
+    <span class="o">}</span>
+
+    <span class="c1"># The virtual ip address shared between the two loadbalancers</span>
+    virtual_ipaddress <span class="o">{</span>
+        192.168.0.26 dev ens160 <span class="c1"># Pour les non anglophone, ceci est notre VIP</span>
+    <span class="o">}</span>
+
+    virtual_server 192.168.0.26 <span class="m">8080</span> <span class="o">{</span>
+    <span class="c1"># monitored interval</span>
+    delay_loop 3
+    <span class="c1"># distribution method</span>
+    lvs_sched rr
+    <span class="c1"># routing method</span>
+    lvs_method DR
+    protocol TCP
+    <span class="o">}</span>
+
+    <span class="c1"># backend server#1</span>
+    real_server 192.168.0.18 <span class="m">8080</span> <span class="o">{</span>
+        weight 1
+        HTTP_GET <span class="o">{</span>       <span class="c1"># On check via un HTTP GET la disponibilité de l&#39;URL 192.168.0.18:8080/guacamole</span>
+            url <span class="o">{</span>
+                <span class="c1"># monitored path</span>
+                path /guacamole
+                <span class="c1"># status code for normally state</span>
+                status_code 200
+            <span class="o">}</span>
+            <span class="c1"># timeout(sec)</span>
+            connect_timeout 3
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="c1"># backend server#1</span>
+    real_server 192.168.0.25 <span class="m">8080</span> <span class="o">{</span>
+        weight 1
+        HTTP_GET <span class="o">{</span>       <span class="c1"># On check via un HTTP GET la disponibilité de l&#39;URL 192.168.0.25:8080/guacamole</span>
+            url <span class="o">{</span>
+                <span class="c1"># monitored path</span>
+                path /guacamole
+                <span class="c1"># status code for normally state</span>
+                status_code 200
+            <span class="o">}</span>
+            <span class="c1"># timeout(sec)</span>
+            connect_timeout 3
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+
+<span class="o">}</span>
+</pre></div>
+
+
+<h3 id="comment-ca-marche">Comment ça marche?</h3>
+<p>Voir les commentaires qui sont assez explicites!</p>
+<h2 id="parametrage-des-slaves">Paramétrage des slaves</h2>
+<p>C'est pareil mais on remplace MASTER par BACKUP et on met un poids inférieur à celui du MASTER.</p>
+<h2 id="en-conclusion">En conclusion</h2>
+<p>Grace à keepalived, on peut faire un semblant de cluster passif permettant ainsi de faire de la haute disponibilité avec de l'open-source.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../verify_keepalived/" class="btn btn-neutral float-right" title="Howto verify keepalived">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../install_keepalived/" class="btn btn-neutral" title="Howto install keepalived"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  <div align="center">Built with <a href="http://www.mkdocs.org">MkDocs</a> using a theme provided by <a href="https://readthedocs.org">Read the Docs</a>.</div>
+  <div align="center">REDBEAR-CONSULTING 2016</div> 
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../install_keepalived/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../verify_keepalived/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
