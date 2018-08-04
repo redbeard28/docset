@@ -4,6 +4,11 @@ site_autor: Jérémie CUADRADO
 site_favicon: images/favicon.ico
 theme: readthedocs
 
+nav:
+ - Home: 'index.md'
+ - About: 'about/license.md'
+ - Markdown: 'howto/mkdocs/utilisation_markdown.md'
+
 pages:
-  - [ 'index.md', 'Home' ]
-  - [ 'howto/mkdocs/utilisation_markdown.md', 'Markdown', 'How to use markdown' ]
+ - [ 'index.md', 'Home' ]
+ - [ 'howto/mkdocs/utilisation_markdown.md', 'Markdown', 'How to use markdown' ]
