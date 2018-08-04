@@ -9,10 +9,6 @@ edit_uri: ""
 
 theme:
     name: readthedocs
-    highlightjs: true
-    hljs_languages:
-        - yaml
-        - django
 
 nav:
     - Home: index.md
@@ -26,6 +22,3 @@ nav:
 
 copyright: Copyright &copy; 2018 <a href="https://twitter.com/_redbeard28">Jeremie CUADRADO</a>, Maintained by the <a href="/about/release-notes">Redbeard Team</a>.
 google_analytics: [ 'UA-89297097-1', 'auto' ]
-
-plugins:
-    - search
