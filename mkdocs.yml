@@ -5,6 +5,6 @@ site_autor: Jérémie CUADRADO
 site_favicon: images/favicon.ico
 
 pages:
-- ['index.md', 'Accueil']
-
+  - ['index.md', 'Home']
+  - ['howto/mkdocs/utilisation_markdown.md', 'Markdown', 'How to use markdown']
 theme: readthedocs
