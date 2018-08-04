@@ -5,3 +5,14 @@ nav:
 
 
 theme: readthedocs
+markdown_extensions:
+  - fenced_code
+  - admonition
+  - codehilite(css_class=code)
+extra:
+  version: '0.1.0'
+  logo: 'images/redbeardv4_LOGO.jpg'
+  palette:
+    primary: 'light blue'
+    accent: 'blue'
+google_analytics: [ 'UA-89297097-1', 'auto' ]
