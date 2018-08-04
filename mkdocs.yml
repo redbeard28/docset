@@ -1,8 +1,9 @@
 site_name: My Docs
+
 pages:
-  - Home: 'index.md'
-  - Howto:
-      How to use markdown: 'howto/mkdocs/utilisation_markdown.md'
+ - Home: 'index.md'
+ - Howto:
+    How to use markdown: 'howto/mkdocs/utilisation_markdown.md'
 
 theme:
   name: redthedocs
