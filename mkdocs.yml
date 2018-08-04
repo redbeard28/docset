@@ -1,24 +1,3 @@
-site_name: Redbeard-Consulting docs
-site_url: http://docs.redbeard-consulting.fr
-site_description: Base de connaissances documentaire provenant d'un consultant freelance Linux
-site_autor: Jérémie CUADRADO
-site_favicon: 'images/favicon.ico'
-
-repo_url: https://github.com/redbeard28/redbeard-consulting_docs
-edit_uri: ""
-
-theme:
-    name: readthedocs
-
-nav:
-    - Home: index.md
-    - Howto:
-        - How to use markdown: howto/mkdocs/utilisation_markdown.md
-        - Ansible basics commands: howto/ansible/ansible_howto.md
-        - Populate file hosts.deny: howto/Linux/populate-hosts.deny.md
-    - About:
-        - Release Notes: about/release-notes.md
-        - License: about/license.md
-
-copyright: Copyright &copy; 2018 <a href="https://twitter.com/_redbeard28">Jeremie CUADRADO</a>, Maintained by the <a href="/about/release-notes">Redbeard Team</a>.
-google_analytics: [ 'UA-89297097-1', 'auto' ]
+site_name: My Docs
+pages:
+- Home: 'index.md'
