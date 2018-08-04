@@ -4,5 +4,4 @@ nav:
   - Home: 'index.md'
 
 
-theme:
-  - name: redthedocs
+theme: redthedocs
