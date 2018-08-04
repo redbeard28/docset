@@ -5,5 +5,5 @@ site_favicon: images/favicon.ico
 theme: readthedocs
 
 pages:
-  - ['index.md', 'Home']
-  - ['howto/mkdocs/utilisation_markdown.md', 'Markdown', 'How to use markdown']
+  - [ 'index.md', 'Home' ]
+  - [ 'howto/mkdocs/utilisation_markdown.md', 'Markdown', 'How to use markdown' ]
