@@ -1,7 +1,7 @@
 site_name: My Docs
 
-pages:
-- Home: 'index.md'
+nav:
+  - Home: 'index.md'
 
 
 theme:
