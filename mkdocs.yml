@@ -1,14 +1,40 @@
 site_name: Redbeard-Consulting docs
-site_url: http://redbeard-consulting_docs.redthedocs.io
+site_url: http://docs.redbeard-consulting.fr
+site_description: Base de connaissances documentaire provenant d'un consultant freelance Linux
 site_autor: Jérémie CUADRADO
-site_favicon: images/favicon.ico
-theme: readthedocs
+site_favicon: 'images/favicon.ico'
+
+repo_url: https://github.com/redbeard28/redbeard-consulting_docs
+edit_uri: ""
+
+theme:
+    name: readthedocs
+    highlightjs: true
+    hljs_languages:
+        - yaml
+        - django
 
 nav:
- - Home: 'index.md'
- - About: 'about/license.md'
- - Markdown: 'howto/mkdocs/utilisation_markdown.md'
+    - Home: index.md
+    - Howto:
+        - How to use markdown: howto/mkdocs/utilisation_markdown.md
+        - Ansible basics commands: howto/ansible/ansible_howto.md
+        - Populate file hosts.deny: howto/Linux/populate-hosts.deny.md
+    - About:
+        - Release Notes: about/release-notes.md
+        - License: about/license.md
 
-pages:
- - [ 'index.md', 'Home' ]
- - [ 'howto/mkdocs/utilisation_markdown.md', 'Markdown', 'How to use markdown' ]
+markdown_extensions:
+    - toc:
+        permalink: 
+    - admonition
+    - def_list
+    - mdx_gh_links:
+        user: mkdocs
+        repo: mkdocs
+
+copyright: Copyright &copy; 2018 <a href="https://twitter.com/_redbeard28">Jeremie CUADRADO</a>, Maintained by the <a href="/about/release-notes">Redbeard Team</a>.
+google_analytics: [ 'UA-89297097-1', 'auto' ]
+
+plugins:
+    - search
