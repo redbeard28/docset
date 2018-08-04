@@ -1,5 +1,6 @@
 site_name: Redbeard-Consulting docs
 site_url: http://docs.redbeard-consulting.fr
+repo_url: https://github.com/redbeard28/redbeard-consulting_docs
 site_description: Base de connaissances documentaire provenant d'un consultant freelance Linux
 site_autor: Jérémie CUADRADO
 site_favicon: 'images/favicon.ico'
