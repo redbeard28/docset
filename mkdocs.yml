@@ -2,7 +2,33 @@ site_name: Redbeard-consulting documentation
 
 nav:
   - Home: 'index.md'
-
+  - Howto:
+      - RedHat:
+          - Register and subscribe a redhat system: 'howto/Red Hat/register-redhat-system.md'
+          - yum error [erno-3]: 'howto/Red Hat/yum_error_erno-3.md'
+      - keepalived:
+          - Verify keepalived: 'howto/keepalived/verify_keepalived.md'
+          - Configure keepalived: 'howto/keepalived/configure_keepalived.md'
+          - Install keepalived: 'howto/keepalived/install_keepalived.md'
+      - mkdocs:
+          - How to use markdown: 'howto/mkdocs/utilisation_markdown.md'
+      - ansible:
+          - Ansible basics commands: 'howto/ansible/ansible_howto.md'
+      - Linux:
+          - Populate file hosts.deny: 'howto/Linux/populate-hosts.deny.md'
+  - Shell-bash:
+      - Utilisation avancée de la commande date: 'shell-bash/date-avanced-cmd.md'
+      - Freeze server by cpu overload: 'shell-bash/freeze-by-cpu-overload.md'
+      - Kill that zombie processus: 'shell-bash/kill-zombie-process.md'
+      - Liste des commandes les plus utilisées: 'shell-bash/most-use-cmd-list.md'
+      - Exemples de commandes grep: 'shell-bash/cmd-grep.md'
+      - Delete Files older than: 'shell-bash/find-rm.md'
+      - Le répertoire /proc: 'shell-bash/folder-proc.md'
+      - Reverse SSH Tunnel: 'shell-bash/reverse-ssh-tunel.md'
+  - Domotique:
+      - Créer un switch virtuel: 'domotique/domoticz/create-dummy-switch.md'
+      - Intégrer Sonos à domoticz: 'domotique/domoticz/sonos-integration.md'
+      - Mettre en place du TTS sous domoticz: 'domotique/domoticz/tts-domoticz.md'
 
 theme: readthedocs
 markdown_extensions:
