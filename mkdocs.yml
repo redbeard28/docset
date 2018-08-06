@@ -29,6 +29,8 @@ nav:
       - Créer un switch virtuel: 'domotique/domoticz/create-dummy-switch.md'
       - Intégrer Sonos à domoticz: 'domotique/domoticz/sonos-integration.md'
       - Mettre en place du TTS sous domoticz: 'domotique/domoticz/tts-domoticz.md'
+  - AWS:
+      - Backup sync with s3cmd on AWS S3 bucket: 'aws/freenas_aws_s3.md'
 
 theme: readthedocs
 markdown_extensions:

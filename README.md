@@ -5,4 +5,20 @@
   </a>
 </h1>
 
-## Work in progress...
+## Howto use
+### Build
+Depuis un terminal  lancez le **build** la commande suivante:
+```bash
+sudo docker build -t redbeard28:docs github.com/redbeard28/redbeard-consulting_docs
+```
+
+### Serve your project
+```bash
+sudo docker run --rm -v `pwd`:/docs -p 8000:8000 redbeard28:docs serve -a 0.0.0.0:8000
+```
+
+## mkdocs.yml
+Prendre exemple sur [mkdocs.yml](https://github.com/redbeard28/redbeard-consulting_docs/blob/master/mkdocs.yml)
+
+## Documentation mkdocs
+You can find any informations on []mkdocs website](https://www.mkdocs.org/user-guide/writing-your-docs/)
