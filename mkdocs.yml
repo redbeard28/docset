@@ -16,6 +16,7 @@ nav:
           - Ansible basics commands: 'howto/ansible/ansible_howto.md'
       - Linux:
           - Populate file hosts.deny: 'howto/Linux/populate-hosts.deny.md'
+          - Configure Git to use a proxy: 'howto/Linux/config-git-to-use-proxy.md'
   - Shell-bash:
       - Utilisation avancée de la commande date: 'shell-bash/date-avanced-cmd.md'
       - Freeze server by cpu overload: 'shell-bash/freeze-by-cpu-overload.md'
