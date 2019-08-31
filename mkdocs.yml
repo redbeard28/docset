@@ -1,47 +1,62 @@
-site_name: Redbeard-consulting documentation
+# Project information
+site_name: 'Redbeard-consulting documentation'
+site_description: 'A collection of cheatsheets and code snippets.'
+site_author: 'Jeremie CUADRADO'
+site_url: 'http://cheatsheets.redbeard-consulting.fr/'
 
-nav:
-  - Home: 'index.md'
-  - Howto:
-      - RedHat:
-          - Register and subscribe a redhat system: 'howto/Red Hat/register-redhat-system.md'
-          - yum error [erno-3]: 'howto/Red Hat/yum_error_erno-3.md'
-      - keepalived:
-          - Verify keepalived: 'howto/keepalived/verify_keepalived.md'
-          - Configure keepalived: 'howto/keepalived/configure_keepalived.md'
-          - Install keepalived: 'howto/keepalived/install_keepalived.md'
-      - mkdocs:
-          - How to use markdown: 'howto/mkdocs/utilisation_markdown.md'
-      - ansible:
-          - Ansible basics commands: 'howto/ansible/ansible_howto.md'
-      - Linux:
-          - Populate file hosts.deny: 'howto/Linux/populate-hosts.deny.md'
-          - Configure Git to use a proxy: 'howto/Linux/config-git-to-use-proxy.md'
-  - Shell-bash:
-      - Utilisation avancée de la commande date: 'shell-bash/date-avanced-cmd.md'
-      - Freeze server by cpu overload: 'shell-bash/freeze-by-cpu-overload.md'
-      - Kill that zombie processus: 'shell-bash/kill-zombie-process.md'
-      - Liste des commandes les plus utilisées: 'shell-bash/most-use-cmd-list.md'
-      - Exemples de commandes grep: 'shell-bash/cmd-grep.md'
-      - Delete Files older than: 'shell-bash/find-rm.md'
-      - Le répertoire /proc: 'shell-bash/folder-proc.md'
-      - Reverse SSH Tunnel: 'shell-bash/reverse-ssh-tunel.md'
-  - Domotique:
-      - Créer un switch virtuel: 'domotique/domoticz/create-dummy-switch.md'
-      - Intégrer Sonos à domoticz: 'domotique/domoticz/sonos-integration.md'
-      - Mettre en place du TTS sous domoticz: 'domotique/domoticz/tts-domoticz.md'
-  - AWS:
-      - Backup sync with s3cmd on AWS S3 bucket: 'aws/freenas_aws_s3.md'
+# Repository
+repo_name: 'redbeard28/cheatsheets'
+repo_url: 'https://github.com/redbeard28/cheatsheets'
+edit_uri: edit/master/docs_src/
 
-theme: readthedocs
-markdown_extensions:
-  - fenced_code
-  - admonition
-  - codehilite(css_class=code)
-extra:
-  version: '0.1.0'
-  logo: 'images/redbeardv4_LOGO.jpg'
+# Copyright
+copyright: 'Copyright &copy; 2017-2019 Jeremie CUADRADO'
+
+# Documentation sources and theme
+docs_dir: 'docs_src'
+site_dir: 'docs'
+
+theme:
+  name: material
   palette:
-    primary: 'light blue'
+    primary: 'deep blue'
     accent: 'blue'
-google_analytics: [ 'UA-89297097-1', 'auto' ]
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+#  feature:
+#    tabs: true
+# logo: 'images/logo.svg'
+# favicon: 'assets/images/favicon.ico
+
+# Options
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/redbeard28'
+    - type: 'twitter'
+      link: 'https://twitter.com/redbeardjcu'
+    - type: 'linkedin'
+      link: 'https://www.linkedin.com/in/jeremiecuadrado/'
+    - type: 'instagram'
+      link: 'https://www.instagram.com/redbeard28/'
+    - type: 'instagram'
+      link: 'https://www.instagram.com/3dfabric/'
+    - type: 'youtube'
+      link: 'https://www.youtube.com/channel/UCySAJzbi3pZS8FFx19SKXiQ'
+
+#  disqus: 'your-shortname'
+
+
+# Google Analytics
+google_analytics:
+  - 'UA-89297097-1'
+  - 'auto'
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
