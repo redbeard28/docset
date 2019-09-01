@@ -21,7 +21,7 @@ option -m =>    html or serve                                               => G
 
 #################################
 ### Recuperation des entrees
-while getopts d:D:i:m:h OPTION
+while getopts d:D:i:m:P:h OPTION
 do
   case "$OPTION" in
   d)
@@ -35,6 +35,9 @@ do
     ;;
   m)
     TYPE="$OPTARG"
+    ;;
+  P)
+    emplacement="$OPTARG"
     ;;
   h)
     usage
@@ -73,12 +76,19 @@ generate_html() {
 
     "
     cd "$DOCS_PATH"
-    #docker run --rm -v "${DOCS_PATH}":/work -p 8003:8000 $image_name serve -a 0.0.0.0:8000 &
-    rm -rf ~/Library/Application\ Support/Dash/DocSets/Redbeard28/redbeard28.docset
-    sleep 5
+#    if [ -z "${emplacement}" ]; then
+#      rm -rf $emplacement
+#      path_docset=${emplacement}/redbeard28.docset
+#    else
+#        path='~/Library/Application\ Support/Dash/DocSets/Redbeard28'
+#        path_docset=${path}/redbeard28.docset
+#    fi
+
     docker run --rm -v "${DOCS_PATH}":/work "$IMAGE_NAME" build  &
     sleep 5
-    python html2dash.py -n redbeard28  -d  ~/Library/Application\ Support/Dash/DocSets/Redbeard28 docs -i docs_src/images/icon.png
+    echo $emplacement
+    echo $path_docset
+    python html2dash.py -n redbeard28 -d ~/Library/Application\ Support/Dash/DocSets/Redbeard28 -i docs_src/images/icon.png docs
     # Fix for icon.ico bug
     cp docs_src/images/favicon.ico ~/Library/Application\ Support/Dash/DocSets/Redbeard28/redbeard28.docset/icon.ico
 }
