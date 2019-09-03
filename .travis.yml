@@ -1,0 +1,20 @@
+---
+language: python
+services: docker
+python:
+  - "2.7"
+
+env:
+  matrix:
+    - TYPE: serve, PATH: "~/Library/Application\ Support/Dash/DocSets/Redbeard28"
+    - TYPE: html, PATH: "~/Library/Application\ Support/Dash/DocSets/Redbeard28"
+
+before_install:
+  - mkdir -p ~/Library/Application\ Support/Dash/DocSets/Redbeard28
+
+install:
+  - pip install molecule docker molecule[docker]
+
+script:
+  - ./generate_doc.sh -d /tmp/docset -D . -i "redbeard28/docset:1.0" -m $TYPE
+
