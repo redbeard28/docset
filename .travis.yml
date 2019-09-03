@@ -6,7 +6,9 @@ python:
 
 env:
   global:
-    - MY_PATH: "~/Library/Application\ Support/Dash/DocSets/Redbeard28"
+    - OUTPUT_PATH: "~/Library/Application\ Support/Dash/DocSets/Redbeard28"
+    - DOCSET_PATH: "~/redbeard28/docset"
+    - IMAGE: "redbeard28/docset:1.0"
   matrix:
     - TYPE_TO_GENERATE: serve
     - TYPE_TO_GENERATE: html
@@ -19,5 +21,5 @@ install:
   - pip install molecule docker molecule[docker]
 
 script:
-  - ./generate_doc.sh -d /tmp/docset -D . -i "redbeard28/docset:1.0" -m $TYPE_TO_GENERATE -P $MY_PATH
+  - ./generate_doc.sh -d $DOCSET_PATH -D . -i $IMAGE -m $TYPE_TO_GENERATE -P $OUTPUT_PATH
 
