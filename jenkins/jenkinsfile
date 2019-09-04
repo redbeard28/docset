@@ -1,4 +1,4 @@
-node{
+node('docker_admin') {
     docker.withRegistry('https://index.docker.io/v1/', 'DOCKERHUB') {
     
         git url: "https://github.com/redbeard28/docset.git", credentialsId: 'jenkins_github_pat'
