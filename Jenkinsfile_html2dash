@@ -27,11 +27,12 @@ pipeline {
         stage('Stop the actual container...'){
 
             steps{
-
-                sh """
-                    container_id=$(docker container ls|grep ${docker_mkdocs_image}|awk \'{ print $1 }\') && \
-                    docker container stop  $container_id
-                """
+                script{
+                    sh """
+                        container_id=$(docker container ls|grep ${docker_mkdocs_image}|awk \'{ print $1 }\') && \
+                        docker container stop  $container_id
+                    """
+                }
             }
         }
         stage('Generate HTML2DASH'){
