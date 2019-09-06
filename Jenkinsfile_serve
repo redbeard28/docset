@@ -1,0 +1,53 @@
+/* Created by Jeremie CUADRADO
+ Under GNU AFFERO GENERAL PUBLIC LICENSE
+*/
+
+pipeline {
+    agent any
+
+
+    environment {
+        branchName = 'master'
+        docker_mkdocs_image = 'redbeard28/docker_mkdocs:0.4'
+        DOCS_PATH = ''
+    }
+
+    stages{
+        stage('Clone the GitHub repo'){
+            steps{
+                git url: "https://github.com/redbeard28/dockset.git", branch: "${branchName}", credentialsId: "jenkins_github_pat"
+            }
+            post{
+                success{
+                    echo 'Successfuly clone your repo...'
+                }
+            }
+        }
+        stage('Stop the actual container...'){
+            /*steps{
+                timeout(time:5, unit:'MINUTES'){
+                    input message:'Approuve Image Building'
+                }
+            }*/
+
+            steps{
+                container_id = sh (
+                    script: 'docker container ls|grep ${docker_mkdocs_image}|awk \'{ print $1 }\'',
+                    returnStdout: true
+                    ).trim()
+                sh """
+                    docker container stop  $container_id
+                """
+            }
+        }
+        stage('Running the new container'){
+            steps{
+                sh """
+                    docker run --rm -v "${DOCS_PATH}":/work -p 8003:8000 $IMAGE_NAME serve -a 0.0.0.0:8000 &
+                """
+            
+            }
+        
+        }
+    }
+}

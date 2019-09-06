@@ -1,0 +1,56 @@
+/* Created by Jeremie CUADRADO
+ Under GNU AFFERO GENERAL PUBLIC LICENSE
+*/
+
+pipeline {
+    agent any
+
+
+    environment {
+        branchName = 'master'
+        docker_mkdocs_image = 'redbeard28/docker_mkdocs:0.4'
+        DOCS_PATH = ''
+        DOCSET_NAME = 'redbeard28'
+    }
+
+    stages{
+        stage('Clone the GitHub repo'){
+            steps{
+                git url: "https://github.com/redbeard28/dockset.git", branch: "${branchName}", credentialsId: "jenkins_github_pat"
+            }
+            post{
+                success{
+                    echo 'Successfuly clone your repo...'
+                }
+            }
+        }
+        stage('Stop the actual container...'){
+
+            steps{
+                container_id = sh (
+                    script: 'docker container ls|grep ${docker_mkdocs_image}|awk \'{ print $1 }\'',
+                    returnStdout: true
+                    ).trim()
+                sh """
+                    docker container stop  $container_id
+                """
+            }
+        }
+        stage('Generate HTML2DASH'){
+            steps{
+                sh """
+                    docker run --rm -v "${DOCS_PATH}":/work "$IMAGE_NAME" build  && \
+                    sleep 5
+                """
+            }
+            steps{
+                sh """
+                    mkdir ${DOC_PATH}/Redbeard28 && \
+                    python html2dash.py -n ${DOCSET_NAME} -d ${DOC_PATH}/Redbeard28 -i docs_src/images/icon.png docs && \
+                    cp docs_src/images/favicon.ico ${DOC_PATH}/Redbeard28/redbeard28.docset/icon.ico
+                """
+            }
+        
+        }
+    }
+}
