@@ -9,7 +9,7 @@ pipeline {
     environment {
         branchName = 'master'
         docker_mkdocs_image = 'redbeard28/docker_mkdocs:0.4'
-        DOCS_PATH = ''
+        DOCS_PATH = 'release'
         DOCSET_NAME = 'redbeard28'
     }
 
