@@ -28,7 +28,7 @@ pipeline {
 
             steps{
                 script{
-                    container_id = sh (
+                    def container_id = sh (
                         script: 'docker container ls|grep ${docker_mkdocs_image}|awk \'{ print $1 }\'',
                         returnStdout: true
                         ).trim()
