@@ -31,23 +31,28 @@ pipeline {
             }*/
 
             steps{
-                container_id = sh (
-                    script: 'docker container ls|grep ${docker_mkdocs_image}|awk \'{ print $1 }\'',
-                    returnStdout: true
-                    ).trim()
-                sh """
-                    docker container stop  $container_id
-                """
+                script{
+                    close_container()
+
+                }
             }
         }
         stage('Running the new container'){
             steps{
-                sh """
-                    docker run --rm -v "${DOCS_PATH}":/work -p 8003:8000 $IMAGE_NAME serve -a 0.0.0.0:8000 &
-                """
-            
+                script{
+                    lauch_container()
+                }
+
             }
-        
+
         }
     }
+}
+
+void close_container() {
+    sh '$container_id=$(docker container ls|grep ${docker_mkdocs_image}|awk \'{ print $1 }\') ; docker container stop  $container_id'
+}
+
+void lauch_container(){
+    sh 'docker run --rm -v "${DOCS_PATH}":/work -p 8003:8000 $IMAGE_NAME serve -a 0.0.0.0:8000 &'
 }

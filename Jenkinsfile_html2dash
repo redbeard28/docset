@@ -28,10 +28,7 @@ pipeline {
 
             steps{
                 script{
-                    sh """
-                        container_id=$(docker container ls|grep ${docker_mkdocs_image}|awk \'{ print $1 }\') && \
-                        docker container stop  $container_id
-                    """
+                    close_container()
                 }
             }
         }
@@ -57,3 +54,8 @@ pipeline {
         }
     }
 }
+void close_container() {
+    sh '$container_id=$(docker container ls|grep ${docker_mkdocs_image}|awk \'{ print $1 }\') ; docker container stop  $container_id'
+}
+
+void
