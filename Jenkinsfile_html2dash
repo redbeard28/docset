@@ -36,17 +36,21 @@ pipeline {
         }
         stage('Generate HTML2DASH'){
             steps{
-                sh """
-                    docker run --rm -v "${DOCS_PATH}":/work "$IMAGE_NAME" build  && \
-                    sleep 5
-                """
+                script{
+                    sh """
+                        docker run --rm -v "${DOCS_PATH}":/work "$IMAGE_NAME" build  && \
+                        sleep 5
+                    """`
+                }
             }
             steps{
-                sh """
+                script{
+                    sh """
                     mkdir ${DOC_PATH}/Redbeard28 && \
                     python html2dash.py -n ${DOCSET_NAME} -d ${DOC_PATH}/Redbeard28 -i docs_src/images/icon.png docs && \
                     cp docs_src/images/favicon.ico ${DOC_PATH}/Redbeard28/redbeard28.docset/icon.ico
-                """
+                    """
+                }
             }
         
         }
