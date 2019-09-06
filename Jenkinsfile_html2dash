@@ -27,13 +27,9 @@ pipeline {
         stage('Stop the actual container...'){
 
             steps{
-                script{
-                    def container_id = sh (
-                        script: 'docker container ls|grep ${docker_mkdocs_image}|awk \'{ print $1 }\'',
-                        returnStdout: true
-                        ).trim()
-                }
+
                 sh """
+                    container_id=$(docker container ls|grep ${docker_mkdocs_image}|awk \'{ print $1 }\') && \
                     docker container stop  $container_id
                 """
             }
