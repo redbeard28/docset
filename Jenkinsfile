@@ -38,8 +38,10 @@ pipeline {
                         sh "docker run -it --rm -p 8001:8000 ${docker_mkdocs_image} &"
                         }
                     }
-                }
             }
         }
+
+
     }
 }
+
