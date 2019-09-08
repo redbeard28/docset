@@ -17,7 +17,7 @@ pipeline {
     stages {
         stage(‘Build’) {
             steps {
-                sh ‘mvn clean install’
+                sh ‘mkdocs serve -a 0.0.0.0:8000’
             }
         }
     }
