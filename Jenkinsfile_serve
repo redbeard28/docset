@@ -10,7 +10,7 @@ pipeline {
         branchName = 'master'
         docker_mkdocs_image = 'redbeard28/docset:0.1'
         DOCSET_NAME = 'redbeard28'
-        DOCKER_TCPIP = ''
+        DOCKER_TCPIP = '10.10.1.212:2376'
     }
 
     stages{
