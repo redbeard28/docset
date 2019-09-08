@@ -6,7 +6,7 @@
 pipeline {
     agent {
         docker {
-            label 'docker_node2'
+            label 'node2'
             image 'redbeard28/docset:0.1'
             args '-p 8001:8000'
         }
