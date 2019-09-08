@@ -15,9 +15,9 @@ pipeline {
         timeout(6, HOURS)
     }
     stages {
-        stage(‘Build’) {
+        stage(‘Serve...’) {
             steps {
-                sh ‘mkdocs serve -a 0.0.0.0:8000’
+                sh "mkdocs serve -a '0.0.0.0:8000'"
             }
         }
     }
