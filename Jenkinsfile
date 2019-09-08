@@ -3,20 +3,20 @@
 */
 
 pipeline {
-
+    agent { label 'node2' }
 
 
     environment {
         branchName = 'master'
         docker_mkdocs_image = 'redbeard28/docset:0.1'
         DOCSET_NAME = 'redbeard28'
-        DOCKER_NODE = ''
-        DOCKER_TCPIP = ''
+        DOCKER_TCPIP = '10.10.1.212:2376'
     }
 
     stages{
-        agent { label '${DOCKER_NODE}' }
+
         stage('Clone the GitHub repo'){
+
             steps{
                 git url: "https://github.com/redbeard28/docset.git", branch: "${branchName}", credentialsId: "jenkins_github_pat"
             }
@@ -45,4 +45,3 @@ pipeline {
 
     }
 }
-
