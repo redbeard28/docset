@@ -3,19 +3,22 @@
 */
 
 pipeline {
-    agent any
+
 
 
     environment {
         branchName = 'master'
-        docker_mkdocs_image = 'redbeard28/docker_mkdocs:0.4'
-        DOCS_PATH = ''
+        docker_mkdocs_image = 'redbeard28/docset:0.1'
+        DOCSET_NAME = 'redbeard28'
+        DOCKER_NODE = ''
+        DOCKER_TCPIP = ''
     }
 
     stages{
+        agent { label '${DOCKER_NODE}' }
         stage('Clone the GitHub repo'){
             steps{
-                git url: "https://github.com/redbeard28/dockset.git", branch: "${branchName}", credentialsId: "jenkins_github_pat"
+                git url: "https://github.com/redbeard28/docset.git", branch: "${branchName}", credentialsId: "jenkins_github_pat"
             }
             post{
                 success{
@@ -23,7 +26,7 @@ pipeline {
                 }
             }
         }
-        stage('Stop the actual container...'){
+        stage('Serve HTML doc'){
             /*steps{
                 timeout(time:5, unit:'MINUTES'){
                     input message:'Approuve Image Building'
@@ -31,28 +34,15 @@ pipeline {
             }*/
 
             steps{
-                script{
-                    close_container()
-
-                }
+                script {
+                    withDockerServer([uri: "tcp://${DOCKER_TCPIP}"]) {
+                        sh "docker run -it --rm -p 8001:8000 ${docker_mkdocs_image}"
+                        }
+                    }
             }
         }
-        stage('Running the new container'){
-            steps{
-                script{
-                    lauch_container()
-                }
 
-            }
 
-        }
     }
 }
 
-void close_container() {
-    sh '$container_id=$(docker container ls|grep ${docker_mkdocs_image}|awk \'{ print $1 }\') ; docker container stop  $container_id'
-}
-
-void lauch_container(){
-    sh 'docker run --rm -v "${DOCS_PATH}":/work -p 8003:8000 $IMAGE_NAME serve -a 0.0.0.0:8000 &'
-}

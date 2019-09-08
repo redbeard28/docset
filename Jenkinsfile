@@ -3,18 +3,19 @@
 */
 
 pipeline {
-    agent any
+
 
 
     environment {
         branchName = 'master'
         docker_mkdocs_image = 'redbeard28/docset:0.1'
-        DOCS_PATH = '.'
         DOCSET_NAME = 'redbeard28'
         DOCKER_NODE = ''
+        DOCKER_TCPIP = ''
     }
 
     stages{
+        agent { label '${DOCKER_NODE}' }
         stage('Clone the GitHub repo'){
             steps{
                 git url: "https://github.com/redbeard28/docset.git", branch: "${branchName}", credentialsId: "jenkins_github_pat"
@@ -35,11 +36,13 @@ pipeline {
             steps{
                 script {
                     withDockerServer([uri: "tcp://${DOCKER_TCPIP}"]) {
-                        sh "docker run -it --rm -p 8001:8000 ${docker_mkdocs_image} &"
+                        sh "docker run -it --rm -p 8001:8000 ${docker_mkdocs_image}"
                         }
                     }
-                }
             }
         }
+
+
     }
 }
+
