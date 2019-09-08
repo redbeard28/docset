@@ -12,8 +12,9 @@ pipeline {
     }
 
     stages{
-        agent { label '${AGENT}' }
+
         stage('${AGENT}: Clone the GitHub repo'){
+            agent { label '${AGENT}' }
             steps{
                 git url: "https://github.com/redbeard28/docset.git", branch: "${branchVName}", credentialsId: "jenkins_github_pat"
             }
