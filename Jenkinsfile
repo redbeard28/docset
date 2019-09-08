@@ -36,7 +36,7 @@ pipeline {
             steps{
                 script {
                     withDockerServer([uri: "tcp://${DOCKER_TCPIP}"]) {
-                        sh "docker run -it --rm -p 8001:8000 ${docker_mkdocs_image} &"
+                        sh "docker run -it --rm -p 8001:8000 ${docker_mkdocs_image}"
                         }
                     }
             }
