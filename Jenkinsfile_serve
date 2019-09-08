@@ -15,8 +15,10 @@ pipeline {
     }
 
     stages{
-        agent { label '${DOCKER_NODE}' }
+
         stage('Clone the GitHub repo'){
+            agent { label '${DOCKER_NODE}' }
+
             steps{
                 git url: "https://github.com/redbeard28/docset.git", branch: "${branchName}", credentialsId: "jenkins_github_pat"
             }
