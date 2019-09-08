@@ -4,8 +4,8 @@
 
 pipeline {
     agent { label 'docker_node2' }
+
     environment {
-        AGENT = 'docker_node2'
         branchVName = 'master'
         TAG = '0.1'
         IMAGE = 'redbeard28/docset'
@@ -13,7 +13,7 @@ pipeline {
 
     stages{
 
-        stage('${AGENT}: Clone the GitHub repo'){
+        stage('Clone the GitHub repo'){
 
             steps{
                 git url: "https://github.com/redbeard28/docset.git", branch: "${branchVName}", credentialsId: "jenkins_github_pat"
@@ -24,7 +24,7 @@ pipeline {
                 }
             }
         }
-        stage('${AGENT}: Build the Image...'){
+        stage('Build the Image...'){
             /*steps{
                 timeout(time:5, unit:'MINUTES'){
                     input message:'Approuve Image Building'
