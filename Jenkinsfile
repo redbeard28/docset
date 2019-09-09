@@ -8,7 +8,7 @@ pipeline {
 
     environment {
         branchName = 'master'
-        docker_mkdocs_image = 'redbeard28/docset:0.1'
+        docker_mkdocs_image = 'redbeard28/docset:0.2'
         DOCSET_NAME = 'redbeard28'
         DOCKER_TCPIP = '10.10.1.212:2376'
     }

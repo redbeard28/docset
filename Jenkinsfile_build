@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         branchVName = 'master'
-        TAG = '0.1'
+        TAG = '0.2'
         IMAGE = 'redbeard28/docset'
     }
 

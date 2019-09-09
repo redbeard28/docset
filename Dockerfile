@@ -6,8 +6,8 @@ RUN apk add --update wget python3 && pip3 install --upgrade pip && rm -rf /var/c
 
 # Install dependencies
 COPY requirements.txt .
-COPY / /work/
-#RUN mkdir /work/site
+#COPY / /work/
+RUN mkdir /work
 
 
 RUN \
@@ -17,7 +17,7 @@ RUN \
 
 WORKDIR /work
 
-#VOLUME /work
+VOLUME /work
 EXPOSE 8000
 
 #ENTRYPOINT ["mkdocs","serve","-a","0.0.0.0:8000","&"]
