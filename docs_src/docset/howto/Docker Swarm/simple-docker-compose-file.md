@@ -50,7 +50,7 @@ services:
   node1-agent:
     image: redbeard28/jenkins_slave:0.9
     command: >
-      java -jar /usr/share/jenkins/slave.jar -jnlpUrl http://JENKINS_URS/computer/node1/slave-agent.jnlp -secret BIG_SECRET_GENERATE_BY_JENKINS_MASTER -workDir "/home/jenkins/agent"
+      java -jar /usr/share/jenkins/slave.jar -jnlpUrl http://JENKINS_URL/computer/node1/slave-agent.jnlp -secret BIG_SECRET_GENERATE_BY_JENKINS_MASTER -workDir "/home/jenkins/agent"
     deploy:
       replicas: 1
       placement:
@@ -75,7 +75,7 @@ services:
   node2-agent:
     image: redbeard28/jenkins_slave:0.9
     command: >
-      java -jar /usr/share/jenkins/slave.jar -jnlpUrl http://JENKINS_URS/computer/node2/slave-agent.jnlp -secret BIG_SECRET_GENERATE_BY_JENKINS_MASTER -workDir "/home/jenkins/agent"
+      java -jar /usr/share/jenkins/slave.jar -jnlpUrl http://JENKINS_URL/computer/node2/slave-agent.jnlp -secret BIG_SECRET_GENERATE_BY_JENKINS_MASTER -workDir "/home/jenkins/agent"
     deploy:
       replicas: 1
       placement:

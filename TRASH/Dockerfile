@@ -5,7 +5,7 @@ RUN apk add --update wget python3 && pip3 install --upgrade pip && rm -rf /var/c
 
 
 # Install dependencies
-COPY requirements.txt .
+COPY ../requirements.txt .
 #COPY / /work/
 RUN mkdir /work
 
