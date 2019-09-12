@@ -5,7 +5,7 @@ To deploy this stack, we need to make two GitHub repos.
   * populate markdown files in a nfs docker volume [docset](https://github.com/redbeard28/docset.git)
   
 
-## Docker image docset_server
+## Part 1 - Docker image docset_server ([repo docker_mkdocs](https://github.com/redbeard28/docker_mkdocs.git))
 This image is very simple. We install mkdocs in the image and put a CMD to start to serve.
 
 ````dockerfile
@@ -86,3 +86,46 @@ pipeline {
 So When I push a new version of of my Dockerfile, a GtHub webhook is pushed to my Jenkins master. It build and push to docker hub.
 
 ![pipeline](img/mkdocs_server.jpg)
+
+
+## Part 2 - Markdown pages ([repo docset](https://github.com/redbeard28/docset.git))
+
+So, in this repo, you can found all the docsets. When the PR is accepted in master branch, a github webhook goes to jenkins and start the pipeline.
+
+The pipeline use a jenkins slave node to make thoses steps: 
+
+  * erase the stack
+  * clone the repo
+  * rsync folders to docker persistant volume (nfs)
+  * create the stack
+  
+
+````yaml
+version: '3.5'
+services:
+  docset:
+    image: redbeard28/docset_server:0.5
+    deploy:
+      replicas: 2
+      placement:
+        constraints:
+          - node.role != manager
+    ports:
+      - 8001:8000
+    volumes:
+      - type: volume
+        source: docset_work
+        target: /work
+        volume:
+          nocopy: true
+
+volumes:
+  docset_work:
+    driver_opts:
+      type: "nfs"
+      o: "addr=XXX.XXX.XXX.XXX,nolock,soft,rw"
+      device: ":/MYPATH/docset/work"
+````
+
+
+Voilà !
