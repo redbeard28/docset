@@ -70,7 +70,7 @@ generate_html() {
     cd ${DOCS_PATH}/release && tar --exclude='.DS_Store' -cvzf ${DOCS_PATH}/docs_src/feeds/redbeard28.tgz Redbeard28.docset
 
     # Add new version
-    sed -i "s/TOTO/${VERSION}/g" ${DOCS_PATH}/docs_src/feeds/redbeard28.xml
+    #sed -i "s/TOTO/${VERSION}/g" ${DOCS_PATH}/docs_src/feeds/redbeard28.xml
 }
 
 
