@@ -1,6 +1,7 @@
 # Docset stack deployment
 
 To deploy this stack, we need to make two GitHub repos.
+
   * generate a docker image with mkdocs (serve mode) [docker_mkdocs](https://github.com/redbeard28/docker_mkdocs.git)
   * populate markdown files in a nfs docker volume [docset](https://github.com/redbeard28/docset.git)
   
