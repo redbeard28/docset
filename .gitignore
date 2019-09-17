@@ -98,3 +98,4 @@ modules.xml
 build/*
 release/*
 *.tgz
+.DS_Store
