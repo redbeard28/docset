@@ -97,3 +97,4 @@ modules.xml
 *.bkp
 build/*
 release/*
+*.tgz
