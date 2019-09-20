@@ -11,7 +11,7 @@
 ####################################################
 Import-Module FailoverClusters -Force
 
-$LogFolder = "C:\LogM\logs\sqlcluster"
+$LogFolder = "C:\logs\sqlcluster"
 $LogFile = $LogFolder + "\cluster.log"
 $datett = Get-Date 
 $ClusterGroup = Get-ClusterGroup
