@@ -2,7 +2,7 @@
 site_name: 'redbeard28 docset'
 site_description: 'A collection of cheatsheets and code snippets.'
 site_author: 'Jeremie CUADRADO'
-site_url: 'http://docset.redbeard-consulting.fr/'
+site_url: 'http://cheatsheets.redbeard-consulting.fr/'
 
 # Repository
 repo_name: 'redbeard28/docset'
