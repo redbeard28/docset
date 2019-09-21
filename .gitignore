@@ -97,5 +97,7 @@ modules.xml
 *.bkp
 build/*
 release/*
-*.tgz
+docs_src/feeds/*.tgz
 .DS_Store
+docs/*
+__Jenkinsfile/*
