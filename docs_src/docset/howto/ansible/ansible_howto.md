@@ -20,3 +20,9 @@ ansible all -m ping
 ```bash
 ansible-playbook my-playbook.yml
 ```
+
+## Ansible galaxy
+
+```bash
+ansible-galaxy install -p external_roles -r requirements.yml
+```

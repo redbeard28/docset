@@ -101,3 +101,4 @@ docs_src/feeds/*.tgz
 .DS_Store
 docs/*
 __Jenkinsfile/*
+TRASH/*
